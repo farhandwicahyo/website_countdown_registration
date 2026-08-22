@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pendaftaran Segera Ditutup</title>
+<style>
+  :root{
+    --bg-deep:#1a0a35;
+    --bg-mid:#4a1f7a;
+    --bg-glow:#a94fd6;
+    --card-dark:#150829;
+    --accent-pink:#e05cc4;
+    --text-white:#f5f0ff;
+    --text-dim:#c9b8e8;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    font-family:'Segoe UI', system-ui, -apple-system, sans-serif;
+    background:var(--bg-deep);
+    color:var(--text-white);
+    overflow-x:hidden;
+  }
+
+  /* ===== HERO / COUNTDOWN SECTION ===== */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:80px 24px 60px;
+    background:
+      radial-gradient(ellipse 900px 500px at 50% 40%, var(--bg-glow) 0%, transparent 70%),
+      linear-gradient(180deg, #120726 0%, var(--bg-deep) 40%, #2a1050 100%);
+    overflow:hidden;
+    text-align:center;
+  }
+
+  .hero::before{
+    content:'';
+    position:absolute;
+    top:0; left:0; right:0; bottom:0;
+    background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 3px);
+    pointer-events:none;
+  }
+
+  .ring{
+    position:absolute;
+    border:3px solid rgba(224,92,196,0.5);
+    border-radius:50%;
+    animation:float 6s ease-in-out infinite;
+  }
+  .ring::after{
+    content:'';
+    position:absolute;
+    inset:35%;
+    background:rgba(224,92,196,0.6);
+    border-radius:50%;
+  }
+  .ring1{ width:24px; height:24px; top:12%; left:16%; animation-delay:0s;}
+  .ring2{ width:20px; height:20px; top:22%; right:20%; animation-delay:1.5s;}
+  .ring3{ width:22px; height:22px; bottom:20%; left:2%; animation-delay:3s;}
+  .ring4{ width:20px; height:20px; bottom:14%; right:6%; animation-delay:2s;}
+
+  @keyframes float{
+    0%,100%{ transform:translateY(0);}
+    50%{ transform:translateY(-14px);}
+  }
+
+  .eyebrow{
+    letter-spacing:0.4em;
+    font-size:13px;
+    color:var(--accent-pink);
+    text-transform:uppercase;
+    margin-bottom:18px;
+    font-weight:600;
+  }
+
+  .headline{
+    font-size:clamp(40px, 7vw, 72px);
+    font-weight:800;
+    letter-spacing:0.02em;
+    text-transform:uppercase;
+    text-shadow:0 0 40px rgba(224,92,196,0.4);
+    margin-bottom:56px;
+  }
+
+  .countdown{
+    display:flex;
+    gap:22px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-bottom:44px;
+    position:relative;
+    z-index:2;
+  }
+
+  .unit{
+    background:linear-gradient(160deg, #241040 0%, var(--card-dark) 60%, #0d0518 100%);
+    border-radius:20px;
+    width:150px;
+    height:150px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    box-shadow:
+      0 20px 40px rgba(0,0,0,0.5),
+      inset 0 1px 0 rgba(255,255,255,0.08),
+      0 0 0 1px rgba(255,255,255,0.04);
+    position:relative;
+  }
+
+  .unit .value{
+    font-size:56px;
+    font-weight:800;
+    line-height:1;
+    font-variant-numeric:tabular-nums;
+  }
+
+  .unit .label{
+    margin-top:20px;
+    font-size:15px;
+    letter-spacing:0.15em;
+    color:var(--text-dim);
+    text-transform:uppercase;
+    font-weight:600;
+  }
+
+  .desc{
+    max-width:560px;
+    color:var(--text-dim);
+    font-size:16px;
+    line-height:1.7;
+    margin-bottom:40px;
+  }
+
+  .cta-btn{
+    background:linear-gradient(160deg, #2a1345 0%, var(--card-dark) 100%);
+    border:1px solid rgba(224,92,196,0.35);
+    color:var(--text-white);
+    font-size:14px;
+    letter-spacing:0.15em;
+    font-weight:700;
+    text-transform:uppercase;
+    padding:20px 52px;
+    border-radius:14px;
+    cursor:pointer;
+    box-shadow:0 15px 35px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.04);
+    transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .cta-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 20px 45px rgba(224,92,196,0.35), 0 0 0 1px rgba(255,255,255,0.06);
+    border-color:var(--accent-pink);
+  }
+
+  .scroll-hint{
+    position:absolute;
+    bottom:28px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:12px;
+    letter-spacing:0.2em;
+    color:var(--text-dim);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    opacity:0.7;
+  }
+
+  .scroll-hint .arrow{
+    width:10px; height:10px;
+    border-right:2px solid var(--text-dim);
+    border-bottom:2px solid var(--text-dim);
+    transform:rotate(45deg);
+    animation:bounce 1.8s ease-in-out infinite;
+  }
+
+  @keyframes bounce{
+    0%,100%{ transform:rotate(45deg) translate(0,0);}
+    50%{ transform:rotate(45deg) translate(4px,4px);}
+  }
+
+  /* ===== FORM SECTION ===== */
+  .form-section{
+    min-height:100vh;
+    background:linear-gradient(180deg, #2a1050 0%, #180a30 100%);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:80px 24px 100px;
+  }
+
+  .form-eyebrow{
+    letter-spacing:0.35em;
+    font-size:12px;
+    color:var(--accent-pink);
+    text-transform:uppercase;
+    font-weight:600;
+    margin-bottom:14px;
+  }
+
+  .form-title{
+    font-size:clamp(28px, 4vw, 40px);
+    font-weight:800;
+    margin-bottom:14px;
+    text-align:center;
+  }
+
+  .form-sub{
+    color:var(--text-dim);
+    font-size:15px;
+    max-width:480px;
+    text-align:center;
+    line-height:1.6;
+    margin-bottom:44px;
+  }
+
+  .form-wrap{
+    width:100%;
+    max-width:680px;
+    background:var(--card-dark);
+    border-radius:24px;
+    padding:12px;
+    box-shadow:0 25px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06);
+    border:1px solid rgba(224,92,196,0.15);
+  }
+
+  .form-wrap iframe{
+    width:100%;
+    height:70vh;
+    max-height:800px;
+    border:none;
+    border-radius:16px;
+    background:#fff;
+  }
+
+  .form-note{
+    margin-top:22px;
+    font-size:13px;
+    color:var(--text-dim);
+    text-align:center;
+    max-width:500px;
+    line-height:1.6;
+  }
+
+  .wa-btn{
+    margin-top:28px;
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    background:#25D366;
+    color:#0b1a10;
+    font-size:15px;
+    font-weight:700;
+    text-decoration:none;
+    padding:16px 32px;
+    border-radius:14px;
+    box-shadow:0 15px 35px rgba(37,211,102,0.35), inset 0 1px 0 rgba(255,255,255,0.25);
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .wa-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 20px 45px rgba(37,211,102,0.5), inset 0 1px 0 rgba(255,255,255,0.3);
+  }
+
+  .wa-btn svg{
+    width:22px;
+    height:22px;
+    flex-shrink:0;
+  }
+
+  @media (max-width:600px){
+    .unit{ width:120px; height:120px; }
+    .unit .value{ font-size:40px; }
+    .countdown{ gap:14px; }
+  }
+
+  /* ===== MODAL KONFIRMASI NAMA ===== */
+  .modal-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(10,4,20,0.72);
+    backdrop-filter:blur(4px);
+    align-items:center;
+    justify-content:center;
+    z-index:100;
+    padding:20px;
+  }
+
+  .modal-overlay.active{
+    display:flex;
+  }
+
+  .modal-box{
+    width:100%;
+    max-width:420px;
+    background:linear-gradient(160deg, #241040 0%, var(--card-dark) 100%);
+    border:1px solid rgba(224,92,196,0.25);
+    border-radius:20px;
+    padding:32px;
+    box-shadow:0 25px 60px rgba(0,0,0,0.6);
+  }
+
+  .modal-title{
+    font-size:20px;
+    font-weight:800;
+    margin-bottom:10px;
+  }
+
+  .modal-sub{
+    color:var(--text-dim);
+    font-size:14px;
+    line-height:1.6;
+    margin-bottom:20px;
+  }
+
+  .modal-input{
+    width:100%;
+    background:#0d0518;
+    border:1px solid rgba(255,255,255,0.12);
+    color:var(--text-white);
+    font-size:15px;
+    padding:14px 16px;
+    border-radius:12px;
+    outline:none;
+    transition:border-color 0.2s ease;
+  }
+
+  .modal-input:focus{
+    border-color:var(--accent-pink);
+  }
+
+  .modal-error{
+    display:none;
+    color:#ff8bb3;
+    font-size:13px;
+    margin-top:8px;
+  }
+
+  .modal-error.active{
+    display:block;
+  }
+
+  .modal-actions{
+    display:flex;
+    gap:12px;
+    margin-top:24px;
+  }
+
+  .modal-btn{
+    flex:1;
+    border:none;
+    border-radius:12px;
+    padding:14px 16px;
+    font-size:14px;
+    font-weight:700;
+    cursor:pointer;
+    transition:transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .modal-btn:hover{
+    transform:translateY(-2px);
+  }
+
+  .modal-btn-cancel{
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.15);
+    color:var(--text-dim);
+  }
+
+  .modal-btn-confirm{
+    background:#25D366;
+    color:#0b1a10;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO / COUNTDOWN ===== -->
+<section class="hero">
+  <div class="ring ring1"></div>
+  <div class="ring ring2"></div>
+  <div class="ring ring3"></div>
+  <div class="ring ring4"></div>
+
+  <p class="eyebrow">Pendaftaran ditutup dalam</p>
+  <h1 class="headline">Only Left</h1>
+
+  <div class="countdown" id="countdown">
+    <div class="unit"><span class="value" id="days">00</span><span class="label">Hari</span></div>
+    <div class="unit"><span class="value" id="hours">00</span><span class="label">Jam</span></div>
+    <div class="unit"><span class="value" id="minutes">00</span><span class="label">Menit</span></div>
+    <div class="unit"><span class="value" id="seconds">00</span><span class="label">Detik</span></div>
+  </div>
+
+  <p class="desc">
+    Lorem ipsum is simply dummy text of the printing and typesetting industry.
+    Lorem ipsum has been the industry's standard dummy text ever since the 1500s.
+  </p>
+
+  <button class="cta-btn" id="registerBtn">Registration Now</button>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <span class="arrow"></span>
+  </div>
+</section>
+
+<!-- ===== FORM SECTION ===== -->
+<section class="form-section" id="formSection">
+  <p class="form-eyebrow">Formulir Pendaftaran</p>
+  <h2 class="form-title">Daftarkan Dirimu Sekarang</h2>
+  <p class="form-sub">Lengkapi data di bawah ini sebelum waktu pendaftaran habis. Prosesnya cepat, cukup kurang dari 2 menit.</p>
+
+  <div class="form-wrap">
+    <!-- Ganti src di bawah ini dengan link embed Google Form kamu sendiri -->
+    <!-- Cara ambil link embed: buka Google Form > titik tiga (⋮) > Sematkan (Embed) HTML > salin URL di dalam src="..." -->
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSfkDWitQSbugK_xaqksPC8Q58WDr8UUToO0bqQzkQoJI_rfOQ/viewform?embedded=true"
+      title="Formulir Pendaftaran"
+      scrolling="yes">
+      Memuat formulir…
+    </iframe>
+  </div>
+
+  <button class="wa-btn" id="waBtn" type="button">
+    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12.004 2C6.486 2 2 6.486 2 12.004c0 1.87.505 3.68 1.462 5.267L2 22l4.868-1.437a9.958 9.958 0 0 0 5.136 1.404h.004c5.518 0 10.004-4.486 10.004-10.004S17.522 2 12.004 2zm0 18.166h-.003a8.15 8.15 0 0 1-4.16-1.14l-.298-.177-3.104.916.925-3.15-.194-.31a8.145 8.145 0 0 1-1.256-4.301c0-4.514 3.674-8.188 8.193-8.188 2.188 0 4.245.853 5.792 2.4a8.13 8.13 0 0 1 2.397 5.792c0 4.514-3.674 8.158-8.292 8.158z"/>
+    </svg>
+    Konfirmasi Pendaftaran via Whatsapp
+  </button>
+</section>
+
+<!-- ===== MODAL KONFIRMASI NAMA ===== -->
+<div class="modal-overlay" id="nameModalOverlay">
+  <div class="modal-box">
+    <h3 class="modal-title">Konfirmasi Pendaftaran</h3>
+    <p class="modal-sub">Masukkan nama kamu, nanti otomatis terisi di pesan Whatsapp.</p>
+    <input type="text" id="nameInput" class="modal-input" placeholder="Nama lengkap" autocomplete="name">
+    <p class="modal-error" id="nameError">Nama tidak boleh kosong.</p>
+    <div class="modal-actions">
+      <button type="button" class="modal-btn modal-btn-cancel" id="modalCancelBtn">Batal</button>
+      <button type="button" class="modal-btn modal-btn-confirm" id="modalConfirmBtn">Kirim</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ===== SET TARGET WAKTU COUNTDOWN =====
+  // Ubah tanggal target sesuai kebutuhan (format: 'YYYY-MM-DDTHH:mm:ss')
+  const targetDate = new Date();
+  targetDate.setDate(targetDate.getDate() + 3);
+  targetDate.setHours(targetDate.getHours() + 5);
+  targetDate.setMinutes(targetDate.getMinutes() + 35);
+
+  function updateCountdown(){
+    const now = new Date();
+    let diff = targetDate - now;
+
+    if(diff < 0) diff = 0;
+
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff / (1000*60*60)) % 24);
+    const minutes = Math.floor((diff / (1000*60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById('days').textContent = String(days).padStart(2,'0');
+    document.getElementById('hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2,'0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2,'0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ===== SCROLL OTOMATIS SAAT TOMBOL DIKLIK =====
+  document.getElementById('registerBtn').addEventListener('click', function(){
+    document.getElementById('formSection').scrollIntoView({ behavior:'smooth' });
+  });
+
+  // ===== POPUP KONFIRMASI NAMA SEBELUM KE WHATSAPP =====
+  const waPhoneNumber = '6285710116209';
+  const overlay = document.getElementById('nameModalOverlay');
+  const nameInput = document.getElementById('nameInput');
+  const nameError = document.getElementById('nameError');
+
+  function openNameModal(){
+    overlay.classList.add('active');
+    nameError.classList.remove('active');
+    nameInput.value = '';
+    setTimeout(() => nameInput.focus(), 50);
+  }
+
+  function closeNameModal(){
+    overlay.classList.remove('active');
+  }
+
+  document.getElementById('waBtn').addEventListener('click', openNameModal);
+  document.getElementById('modalCancelBtn').addEventListener('click', closeNameModal);
+
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay) closeNameModal();
+  });
+
+  function confirmAndGoToWhatsapp(){
+    const name = nameInput.value.trim();
+    if(!name){
+      nameError.classList.add('active');
+      nameInput.focus();
+      return;
+    }
+    const message = `Halo,\nNama saya ${name}\n\nKonfirmasi sudah melakukan pendaftaran`;
+    const url = `https://wa.me/${waPhoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+    closeNameModal();
+  }
+
+  document.getElementById('modalConfirmBtn').addEventListener('click', confirmAndGoToWhatsapp);
+  nameInput.addEventListener('keydown', function(e){
+    if(e.key === 'Enter') confirmAndGoToWhatsapp();
+  });
+</script>
+
+</body>
+</html>
