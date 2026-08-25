@@ -124,11 +124,11 @@ const calGrid = document.getElementById('calGrid');
 
 if(calGrid){
   const calEvents = [
-    { date:'2026-08-31', title:'Konferensi Tahunan Dokter 2026', tag:'Pendaftaran Dibuka', desc:'Acara puncak tahunan dengan pembicara dari berbagai bidang spesialisasi. Pendaftaran ditutup di tanggal ini.' },
-    { date:'2026-09-14', title:'Workshop Pelatihan Klinis Lanjutan', tag:'Segera Hadir', desc:'Sesi praktik langsung bersama mentor berpengalaman untuk meningkatkan keterampilan klinis.' },
-    { date:'2026-10-02', title:'Seminar Riset & Publikasi Ilmiah', tag:'Segera Hadir', desc:'Diskusi dan berbagi hasil riset terbaru dari para anggota di berbagai bidang kedokteran.' },
-    { date:'2026-10-20', title:'Bakti Sosial & Layanan Kesehatan Gratis', tag:'Segera Hadir', desc:'Kegiatan pengabdian masyarakat bersama anggota di wilayah yang membutuhkan.' },
-    { date:'2026-11-08', title:'Sertifikasi Kompetensi Batch Baru', tag:'Segera Hadir', desc:'Ujian dan penerbitan sertifikat kompetensi profesi untuk anggota terdaftar.' }
+    { start:'2024-10-22', end:'2024-10-24', title:'iMEDIC I 2024', tag:'Simposium Internasional', desc:'Simposium dan Workshop Kedokteran Militer Internasional pertama, mempertemukan pakar kesehatan militer dari berbagai negara.' },
+    { start:'2025-10-22', end:'2025-10-24', title:'iMEDIC II 2025', tag:'Simposium Internasional', desc:'Kelanjutan simposium tahunan yang membahas perkembangan terkini kedokteran militer dan kesiapsiagaan medis.' },
+    { start:'2026-07-11', end:'2026-07-11', title:'Musyawarah Nasional PERDOKMIL', tag:'Munas', desc:'Musyawarah Nasional Perkumpulan Kedokteran Militer Indonesia untuk menentukan arah organisasi ke depan.' },
+    { start:'2026-08-16', end:'2026-08-16', title:'Independence Day Golf Tournament', tag:'Kegiatan Sosial', desc:'Turnamen golf dalam rangka memperingati Hari Kemerdekaan sekaligus mempererat silaturahmi anggota.' },
+    { start:'2026-08-25', end:'2026-08-26', title:'PERTASINDO Peduli NTT', tag:'Bakti Sosial', desc:'Aksi bakti sosial dan layanan kesehatan gratis bagi masyarakat di Nusa Tenggara Timur.' }
   ];
 
   const calMonthNames = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
@@ -138,26 +138,47 @@ if(calGrid){
   const calNext = document.getElementById('calNext');
   const calToday = document.getElementById('calToday');
 
-  const firstEvent = calEvents.slice().sort(function(a,b){ return a.date < b.date ? -1 : 1; })[0];
-  const startDate = firstEvent ? new Date(firstEvent.date + 'T00:00:00') : new Date();
+  function pad2(n){ return String(n).padStart(2,'0'); }
+  function toDate(s){ return new Date(s + 'T00:00:00'); }
+  function sameDay(a, b){ return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate(); }
+
+  const realToday = new Date();
+  const startDate = calEvents.some(function(ev){ return toDate(ev.start) <= realToday && realToday <= toDate(ev.end); })
+    ? realToday
+    : toDate(calEvents[calEvents.length - 1].start);
   let calYear = startDate.getFullYear();
   let calMonth = startDate.getMonth();
 
-  function pad2(n){ return String(n).padStart(2,'0'); }
-
   function eventsOn(y, m, d){
-    const key = y + '-' + pad2(m+1) + '-' + pad2(d);
-    return calEvents.filter(function(ev){ return ev.date === key; });
+    const target = new Date(y, m, d);
+    return calEvents.filter(function(ev){
+      return target >= toDate(ev.start) && target <= toDate(ev.end);
+    });
+  }
+
+  function formatRange(ev){
+    const s = toDate(ev.start);
+    const e = toDate(ev.end);
+    if(sameDay(s, e)){
+      return pad2(s.getDate()) + ' ' + calMonthNames[s.getMonth()] + ' ' + s.getFullYear();
+    }
+    if(s.getMonth() === e.getMonth() && s.getFullYear() === e.getFullYear()){
+      return pad2(s.getDate()) + '-' + pad2(e.getDate()) + ' ' + calMonthNames[s.getMonth()] + ' ' + s.getFullYear();
+    }
+    return pad2(s.getDate()) + ' ' + calMonthNames[s.getMonth()] + ' ' + s.getFullYear() + ' - ' + pad2(e.getDate()) + ' ' + calMonthNames[e.getMonth()] + ' ' + e.getFullYear();
   }
 
   function showDetail(ev){
-    const d = new Date(ev.date + 'T00:00:00');
+    const s = toDate(ev.start);
+    const e = toDate(ev.end);
+    const dayLabel = sameDay(s, e) ? pad2(s.getDate()) : (pad2(s.getDate()) + '-' + pad2(e.getDate()));
     calDetail.innerHTML =
       '<div class="cal-detail-card">' +
-        '<div class="cal-detail-date"><strong>' + pad2(d.getDate()) + '</strong><span>' + calMonthNames[d.getMonth()].slice(0,3) + '</span></div>' +
+        '<div class="cal-detail-date"><strong>' + dayLabel + '</strong><span>' + calMonthNames[s.getMonth()].slice(0,3) + '</span></div>' +
         '<div class="cal-detail-body">' +
           '<span class="cal-detail-tag">' + ev.tag + '</span>' +
           '<h4>' + ev.title + '</h4>' +
+          '<p>' + formatRange(ev) + '</p>' +
           '<p>' + ev.desc + '</p>' +
         '</div>' +
       '</div>';
@@ -243,7 +264,88 @@ if(calGrid){
   }
 
   renderCalendar();
-  if(firstEvent) showDetail(firstEvent);
+  const defaultEvent = calEvents.filter(function(ev){
+    return toDate(ev.start) <= realToday && realToday <= toDate(ev.end);
+  })[0] || calEvents[calEvents.length - 1];
+  showDetail(defaultEvent);
+}
+
+// ===== GALERI KEGIATAN (slideshow, index.html) =====
+const gallerySlides = Array.from(document.querySelectorAll('.gallery-slide'));
+
+if(gallerySlides.length){
+  const galleryDotsWrap = document.getElementById('galleryDots');
+  const galleryThumbs = Array.from(document.querySelectorAll('.gallery-thumb'));
+  const galPrev = document.getElementById('galPrev');
+  const galNext = document.getElementById('galNext');
+  let galIndex = 0;
+  let galTimer = null;
+
+  gallerySlides.forEach(function(slide, i){
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+    dot.addEventListener('click', function(){ goToSlide(i); });
+    galleryDotsWrap.appendChild(dot);
+  });
+
+  const galleryDots = Array.from(galleryDotsWrap.children);
+
+  function renderGallery(){
+    gallerySlides.forEach(function(slide, i){ slide.classList.toggle('active', i === galIndex); });
+    galleryDots.forEach(function(dot, i){ dot.classList.toggle('active', i === galIndex); });
+    galleryThumbs.forEach(function(thumb, i){ thumb.classList.toggle('active', i === galIndex); });
+  }
+
+  function goToSlide(i){
+    galIndex = (i + gallerySlides.length) % gallerySlides.length;
+    renderGallery();
+    resetGalleryTimer();
+  }
+
+  function resetGalleryTimer(){
+    if(galTimer) clearInterval(galTimer);
+    galTimer = setInterval(function(){
+      galIndex = (galIndex + 1) % gallerySlides.length;
+      renderGallery();
+    }, 10000);
+  }
+
+  if(galPrev) galPrev.addEventListener('click', function(){ goToSlide(galIndex - 1); });
+  if(galNext) galNext.addEventListener('click', function(){ goToSlide(galIndex + 1); });
+  galleryThumbs.forEach(function(thumb, i){
+    thumb.addEventListener('click', function(){ goToSlide(i); });
+  });
+
+  renderGallery();
+  resetGalleryTimer();
+}
+
+// ===== FORM KONTAK -> WHATSAPP (contact.html) =====
+const contactForm = document.getElementById('contactForm');
+
+if(contactForm){
+  const contactWaNumber = '6285710116209';
+
+  contactForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('cName').value.trim();
+    const email = document.getElementById('cEmail').value.trim();
+    const subject = document.getElementById('cSubject').value.trim();
+    const message = document.getElementById('cMessage').value.trim();
+
+    const text =
+      'Halo, saya ingin menghubungi PERTASINDO.\n\n' +
+      'Nama: ' + name + '\n' +
+      'Email: ' + email + '\n' +
+      'Subjek: ' + subject + '\n' +
+      'Pesan: ' + message;
+
+    const url = 'https://wa.me/' + contactWaNumber + '?text=' + encodeURIComponent(text);
+    window.open(url, '_blank', 'noopener,noreferrer');
+    contactForm.reset();
+  });
 }
 
 // ===== HIGHLIGHT MENU AKTIF SESUAI HALAMAN =====

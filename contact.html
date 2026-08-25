@@ -23,6 +23,7 @@
       <li><a href="events.html">Agenda Acara</a></li>
       <li><a href="news.html">Berita</a></li>
       <li><a href="contact.html">Kontak</a></li>
+      <li class="nav-join-us"><a href="daftar.html">JOIN US</a></li>
     </ul>
     <a class="btn btn-teal" href="daftar.html">JOIN US</a>
     <button class="mobile-toggle" id="navToggle" aria-label="Menu">
@@ -68,7 +69,7 @@
     <div class="contact-form">
       <h3 style="font-size:19px;font-weight:800;color:var(--navy);margin-bottom:6px;">Kirim Pesan</h3>
       <p style="font-size:13.5px;color:var(--text-gray);margin-bottom:24px;">Isi formulir di bawah ini, tim kami akan segera menghubungi kamu kembali.</p>
-      <form onsubmit="event.preventDefault(); alert('Terima kasih! Pesan kamu sudah kami terima.'); this.reset();">
+      <form id="contactForm">
         <div class="form-row">
           <div class="form-field">
             <label for="cName">Nama Lengkap</label>
@@ -87,7 +88,7 @@
           <label for="cMessage">Pesan</label>
           <textarea id="cMessage" rows="5" required placeholder="Tulis pesan kamu di sini..."></textarea>
         </div>
-        <button type="submit" class="btn btn-teal" style="width:100%;justify-content:center;">Kirim Pesan</button>
+        <button type="submit" class="btn btn-teal" style="width:100%;justify-content:center;">Kirim via WhatsApp</button>
       </form>
 
       <div class="map-embed">

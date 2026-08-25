@@ -141,6 +141,10 @@ img,svg{display:block;max-width:100%;}
 .site-nav.scrolled .site-logo .logo-text{ color:var(--navy); }
 .site-nav.scrolled .site-logo .logo-text small{ color:var(--teal-dark); }
 
+@media (max-width:600px){
+  .site-logo .logo-text{ display:none; }
+}
+
 .nav-links{
   display:flex;
   align-items:center;
@@ -148,6 +152,8 @@ img,svg{display:block;max-width:100%;}
   list-style:none;
   flex-wrap:wrap;
 }
+
+.nav-join-us{ display:none; }
 
 .nav-links a{
   text-decoration:none;
@@ -217,14 +223,44 @@ img,svg{display:block;max-width:100%;}
   .nav-links.open a:hover,
   .nav-links.open a.active{ color:var(--blue); border-bottom-color:var(--blue); }
   .mobile-toggle{ display:flex; }
+  .nav-inner > .btn-teal{ display:none; }
+  .nav-join-us{ display:block !important; width:100%; margin-top:4px; padding-top:14px; border-top:1px solid var(--border-soft); }
+  .nav-join-us a{
+    display:inline-block;
+    background:var(--teal);
+    color:var(--navy);
+    font-weight:700;
+    padding:10px 22px;
+    border-radius:8px;
+    border-bottom:none !important;
+  }
 }
 
 /* ===== PAGE HERO (interior pages) ===== */
 .page-hero{
-  background:linear-gradient(120deg, var(--navy) 0%, var(--blue) 55%, var(--teal-dark) 100%);
-  padding:70px 24px 90px;
+  background:
+    linear-gradient(120deg, rgba(36,9,73,0.9) 0%, rgba(75,31,133,0.7) 55%, rgba(195,161,82,0.55) 100%),
+    url('assets/hero-background.jpg');
+  background-size:cover;
+  background-position:center;
+  background-blend-mode:multiply, normal;
+  padding:110px 24px 48px;
   text-align:center;
   color:var(--white);
+}
+
+@media (max-width:600px){
+  .page-hero{ padding:88px 20px 36px; }
+}
+
+/* about.html pakai foto sendiri, bukan pattern hero-background.jpg */
+.about-hero{
+  background:
+    linear-gradient(120deg, rgba(36,9,73,0.92) 0%, rgba(75,31,133,0.78) 55%, rgba(195,161,82,0.5) 100%),
+    url('assets/IMG_0001.JPEG');
+  background-size:cover;
+  background-position:center 15%;
+  background-blend-mode:normal;
 }
 
 .page-hero .eyebrow{
@@ -234,6 +270,8 @@ img,svg{display:block;max-width:100%;}
   text-transform:uppercase;
   opacity:0.85;
   margin-bottom:14px;
+  overflow-wrap:break-word;
+  word-break:break-word;
 }
 
 .page-hero h1{
@@ -274,12 +312,15 @@ img,svg{display:block;max-width:100%;}
   overflow:hidden;
 }
 
+@media (max-width:600px){
+  .home-hero{ padding:90px 20px 60px; }
+}
+
 .home-hero-grid{
   max-width:1180px;
   width:100%;
+  min-width:0;
   margin:0 auto;
-  display:flex;
-  align-items:center;
 }
 
 .home-hero-grid > div{ max-width:640px; }
@@ -291,6 +332,8 @@ img,svg{display:block;max-width:100%;}
   text-transform:uppercase;
   color:var(--teal);
   margin-bottom:16px;
+  overflow-wrap:break-word;
+  word-break:break-word;
 }
 
 .home-hero h1{
@@ -453,6 +496,8 @@ img,svg{display:block;max-width:100%;}
   text-transform:uppercase;
   color:var(--teal-dark);
   margin-bottom:12px;
+  overflow-wrap:break-word;
+  word-break:break-word;
 }
 
 .section-header h2{
@@ -755,6 +800,7 @@ img,svg{display:block;max-width:100%;}
 
 .news-thumb{
   height:150px;
+  overflow:hidden;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -762,6 +808,13 @@ img,svg{display:block;max-width:100%;}
 }
 
 .news-thumb svg{ width:44px; height:44px; }
+
+.news-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
 
 .news-body{ padding:20px; }
 
@@ -787,6 +840,172 @@ img,svg{display:block;max-width:100%;}
 .news-body .news-date{
   font-size:12px;
   color:var(--text-gray);
+}
+
+/* ===== GALERI KEGIATAN (slideshow) ===== */
+.gallery-slider{
+  position:relative;
+  max-width:960px;
+  margin:0 auto;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 30px 60px rgba(36,9,73,0.18);
+}
+
+.gallery-track{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/8;
+}
+
+@media (max-width:700px){
+  .gallery-track{ aspect-ratio:4/5; }
+}
+
+.gallery-slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity 0.6s ease;
+}
+
+.gallery-slide.active{
+  opacity:1;
+  visibility:visible;
+}
+
+.gallery-slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.gallery-overlay{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  padding:28px 32px 24px;
+  background:linear-gradient(0deg, rgba(36,9,73,0.92) 0%, rgba(36,9,73,0.5) 55%, transparent 100%);
+  color:var(--white);
+}
+
+.gallery-count{
+  display:block;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:0.1em;
+  color:var(--teal);
+  margin-bottom:8px;
+}
+
+.gallery-overlay h3{
+  font-size:clamp(18px, 2.6vw, 24px);
+  font-weight:800;
+  margin-bottom:8px;
+}
+
+.gallery-overlay p{
+  font-size:13.5px;
+  color:rgba(251,251,248,0.85);
+  line-height:1.6;
+  max-width:520px;
+}
+
+.gallery-nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:none;
+  background:rgba(251,251,248,0.9);
+  color:var(--navy);
+  font-size:18px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:5;
+  transition:background 0.2s ease;
+}
+
+.gallery-nav:hover{ background:var(--white); }
+.gallery-prev{ left:16px; }
+.gallery-next{ right:16px; }
+
+.gallery-dots{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  margin-top:20px;
+}
+
+.gallery-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  border:none;
+  background:var(--border-soft);
+  cursor:pointer;
+  padding:0;
+  transition:width 0.25s ease, background 0.25s ease;
+}
+
+.gallery-dot.active{
+  width:24px;
+  border-radius:5px;
+  background:var(--teal);
+}
+
+.gallery-label{
+  text-align:center;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--text-gray);
+  margin:40px 0 20px;
+}
+
+.gallery-thumbs{
+  max-width:960px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(5, 1fr);
+  gap:14px;
+}
+
+@media (max-width:700px){
+  .gallery-thumbs{ grid-template-columns:repeat(3, 1fr); }
+}
+
+.gallery-thumb{
+  border:2px solid transparent;
+  border-radius:12px;
+  overflow:hidden;
+  padding:0;
+  cursor:pointer;
+  aspect-ratio:4/3;
+  background:none;
+  opacity:0.6;
+  transition:opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.gallery-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.gallery-thumb.active{
+  opacity:1;
+  border-color:var(--teal);
 }
 
 /* ===== CTA BANNER ===== */
@@ -1087,6 +1306,10 @@ img,svg{display:block;max-width:100%;}
 
 @media (max-width:860px){
   .program-carousel{ grid-template-columns:1fr; }
+}
+
+@media (max-width:600px){
+  #programCarouselSection{ display:none; }
 }
 
 .pc-image{
@@ -1603,4 +1826,14 @@ img,svg{display:block;max-width:100%;}
   height:280px;
   border:none;
   display:block;
+}
+
+/* letter-spacing lebar pada label "eyebrow" bikin teks overflow di layar sempit, dikecilkan di mobile */
+/* ditaruh di akhir file supaya menang urutan cascade dibanding definisi .eyebrow aslinya */
+@media (max-width:600px){
+  .home-hero .eyebrow,
+  .page-hero .eyebrow,
+  .section-header .eyebrow{
+    letter-spacing:0.08em !important;
+  }
 }
