@@ -128,7 +128,8 @@ if(calGrid){
     { start:'2025-10-22', end:'2025-10-24', title:'iMEDIC II 2025', tag:'Simposium Internasional', desc:'Kelanjutan simposium tahunan yang membahas perkembangan terkini kedokteran militer dan kesiapsiagaan medis.' },
     { start:'2026-07-11', end:'2026-07-11', title:'Musyawarah Nasional PERDOKMIL', tag:'Munas', desc:'Musyawarah Nasional Perkumpulan Kedokteran Militer Indonesia untuk menentukan arah organisasi ke depan.' },
     { start:'2026-08-16', end:'2026-08-16', title:'Independence Day Golf Tournament', tag:'Kegiatan Sosial', desc:'Turnamen golf dalam rangka memperingati Hari Kemerdekaan sekaligus mempererat silaturahmi anggota.' },
-    { start:'2026-08-25', end:'2026-08-26', title:'PERTASINDO Peduli NTT', tag:'Bakti Sosial', desc:'Aksi bakti sosial dan layanan kesehatan gratis bagi masyarakat di Nusa Tenggara Timur.' }
+    { start:'2026-08-25', end:'2026-08-26', title:'PERTASINDO Peduli NTT', tag:'Bakti Sosial', desc:'Aksi bakti sosial dan layanan kesehatan gratis bagi masyarakat di Nusa Tenggara Timur.' },
+    { start:'2026-10-21', end:'2026-10-21', title:'SIERA III 2026', tag:'Simposium Internasional', desc:'The 3rd Symposium of Indonesian Health Resilience Association.' }
   ];
 
   const calMonthNames = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
@@ -143,9 +144,12 @@ if(calGrid){
   function sameDay(a, b){ return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate(); }
 
   const realToday = new Date();
-  const startDate = calEvents.some(function(ev){ return toDate(ev.start) <= realToday && realToday <= toDate(ev.end); })
-    ? realToday
-    : toDate(calEvents[calEvents.length - 1].start);
+  const featuredEvent = calEvents.find(function(ev){ return ev.title === 'SIERA III 2026'; });
+  const startDate = featuredEvent
+    ? toDate(featuredEvent.start)
+    : (calEvents.some(function(ev){ return toDate(ev.start) <= realToday && realToday <= toDate(ev.end); })
+      ? realToday
+      : toDate(calEvents[calEvents.length - 1].start));
   let calYear = startDate.getFullYear();
   let calMonth = startDate.getMonth();
 
@@ -264,7 +268,7 @@ if(calGrid){
   }
 
   renderCalendar();
-  const defaultEvent = calEvents.filter(function(ev){
+  const defaultEvent = featuredEvent || calEvents.filter(function(ev){
     return toDate(ev.start) <= realToday && realToday <= toDate(ev.end);
   })[0] || calEvents[calEvents.length - 1];
   showDetail(defaultEvent);

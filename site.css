@@ -13,7 +13,7 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-  font-family:'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family:'Plus Jakarta Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
   background:var(--white);
   color:var(--text-dark);
   overflow-x:hidden;
@@ -1169,6 +1169,42 @@ img,svg{display:block;max-width:100%;}
 
 .content-visual svg{ width:70%; }
 
+.content-visual img{ width:70%; max-width:320px; }
+
+.program-cta-heading{
+  font-size:clamp(18px, 2.1vw, 26px);
+  white-space:nowrap;
+}
+
+.program-cta-text{ text-align:justify; }
+
+@media (max-width:640px){
+  .program-cta-heading{ white-space:normal; }
+}
+
+.content-visual--photo{
+  padding:0;
+  overflow:hidden;
+  border-radius:0;
+}
+
+.content-visual--photo img{
+  width:100%;
+  max-width:none;
+  height:100%;
+  min-height:460px;
+  object-fit:cover;
+  object-position:top center;
+  display:block;
+}
+
+.content-visual--plain{
+  border:none;
+  background:none;
+  padding:0;
+  min-height:0;
+}
+
 .content-text h2{
   font-size:clamp(22px, 3vw, 30px);
   font-weight:800;
@@ -1181,6 +1217,38 @@ img,svg{display:block;max-width:100%;}
   font-size:14.5px;
   line-height:1.75;
   margin-bottom:16px;
+}
+
+.logo-meaning-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:14px;
+  margin-top:8px;
+}
+
+@media (max-width:520px){
+  .logo-meaning-grid{ grid-template-columns:1fr; }
+}
+
+.logo-meaning-item{
+  border:1px solid var(--border-soft);
+  border-radius:0;
+  padding:14px 16px;
+  background:var(--white);
+}
+
+.logo-meaning-item h4{
+  font-size:13.5px;
+  font-weight:700;
+  color:var(--navy);
+  margin-bottom:4px;
+}
+
+.logo-meaning-item p{
+  font-size:12px;
+  color:var(--text-gray);
+  line-height:1.55;
+  margin-bottom:0;
 }
 
 .value-grid{
@@ -1233,64 +1301,181 @@ img,svg{display:block;max-width:100%;}
   line-height:1.6;
 }
 
+/* ===== VISI & MISI ===== */
+.vm-section{ padding:48px 24px; }
+
+.vm-row{
+  max-width:1180px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:64px;
+}
+
+.vm-row.reverse{ flex-direction:row-reverse; }
+
+.vm-row--center{
+  max-width:900px;
+  justify-content:center;
+  text-align:center;
+}
+
+.vm-row--center .vm-badge{ margin-left:auto; margin-right:auto; }
+.vm-row--center .vm-statement--visi{ text-align:center; }
+.vm-row--center .vm-stats{ text-align:left; }
+
+.vm-image{ flex:0 0 42%; }
+
+.vm-image img{
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  border-radius:18px;
+  display:block;
+}
+
+.vm-content{ flex:1; min-width:0; }
+
+.vm-badge{
+  display:inline-block;
+  padding:8px 20px;
+  border:1px solid var(--border-soft);
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--navy);
+  margin-bottom:26px;
+}
+
+.vm-statement{
+  font-size:clamp(20px, 2.4vw, 28px);
+  font-weight:500;
+  color:var(--navy);
+  line-height:1.5;
+}
+
+.vm-statement--visi{
+  font-size:clamp(18px, 1.8vw, 20px);
+  font-weight:400;
+  text-align:justify;
+}
+
+.vm-statement--misi{
+  font-size:clamp(16px, 2vw, 26px);
+  white-space:nowrap;
+}
+
+@media (max-width:600px){
+  .vm-statement--misi{ white-space:normal; }
+}
+
+.vm-content .vm-stats{ margin-top:36px; }
+
+.vm-stats{
+  display:flex;
+  gap:28px;
+}
+
+.vm-stat{
+  flex:1;
+  min-width:0;
+  padding-left:20px;
+  border-left:2px solid var(--teal);
+}
+
+.vm-stat-num{
+  display:block;
+  font-size:36px;
+  font-weight:800;
+  color:var(--navy);
+  line-height:1;
+  margin-bottom:10px;
+}
+
+.vm-stat-label{
+  display:block;
+  font-size:12.5px;
+  color:var(--text-gray);
+  line-height:1.5;
+}
+
+@media (max-width:900px){
+  .vm-row, .vm-row.reverse{ flex-direction:column; gap:32px; }
+  .vm-image{ flex:none; width:100%; }
+  .vm-stats{ flex-direction:column; gap:20px; }
+}
+
 /* ===== TEAM / JAJARAN ANGGOTA ===== */
-.team-grid{
+.anggota-section{ padding:48px 24px; }
+
+.anggota-header{
+  text-align:left;
+  max-width:1180px;
+  margin:0 auto 24px;
+}
+
+.anggota-header p{ white-space:nowrap; }
+
+@media (max-width:600px){
+  .anggota-header p{ white-space:normal; }
+}
+
+.eyebrow-dot{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+
+.eyebrow-dot::before{
+  content:'';
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--teal);
+  flex-shrink:0;
+}
+
+.anggota-grid{
   max-width:1180px;
   margin:0 auto;
   display:grid;
   grid-template-columns:repeat(4, 1fr);
-  gap:24px;
+  gap:20px;
 }
 
 @media (max-width:900px){
-  .team-grid{ grid-template-columns:repeat(2, 1fr); }
+  .anggota-grid{ grid-template-columns:repeat(2, 1fr); }
 }
-@media (max-width:520px){
-  .team-grid{ grid-template-columns:1fr; }
+@media (max-width:560px){
+  .anggota-grid{ grid-template-columns:1fr; }
 }
 
-.team-card{
-  text-align:center;
-  padding:28px 20px;
-  border-radius:16px;
-  background:var(--white);
+.anggota-card{ display:flex; flex-direction:column; }
+
+.anggota-photo{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  object-position:top center;
+  border-radius:0;
   border:1px solid var(--border-soft);
-  transition:transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom:10px;
+  display:block;
+  background:var(--white);
 }
 
-.team-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 20px 36px rgba(36,9,73,0.1);
-}
-
-.team-photo{
-  width:96px;
-  height:96px;
-  border-radius:50%;
-  margin:0 auto 18px;
-  background:linear-gradient(150deg, var(--navy), var(--blue));
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:rgba(255,255,255,0.85);
-}
-
-.team-photo svg{ width:40px; height:40px; }
-
-.team-card h3{
-  font-size:15px;
+.anggota-name{
+  font-size:14.5px;
   font-weight:700;
   color:var(--navy);
-  margin-bottom:4px;
+  margin-bottom:2px;
 }
 
-.team-role{
-  display:inline-block;
-  font-size:11.5px;
-  font-weight:700;
+.anggota-role{
+  font-size:12.5px;
   color:var(--teal-dark);
-  text-transform:uppercase;
-  letter-spacing:0.06em;
 }
 
 /* ===== PROGRAM CAROUSEL (services page) ===== */

@@ -9,7 +9,7 @@
   justify-content:center;
   background:
     linear-gradient(120deg, rgba(36,9,73,0.92) 0%, rgba(75,31,133,0.78) 55%, rgba(195,161,82,0.5) 100%),
-    url('assets/IMG_9994.JPEG');
+    url('assets/DSC05478.jpg');
   background-size:cover;
   background-position:center;
   padding:140px 24px 60px;
@@ -214,15 +214,34 @@
 }
 
 /* ===== FORM PENDAFTARAN ===== */
+.form-grid{
+  width:100%;
+  max-width:1180px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:24px;
+}
+
+@media (max-width:860px){
+  .form-grid{ grid-template-columns:1fr; }
+}
+
 .form-wrap{
   width:100%;
-  max-width:680px;
-  margin:0 auto;
   background:var(--white);
   border-radius:20px;
   padding:12px;
   box-shadow:0 25px 60px rgba(14,47,92,0.12);
   border:1px solid var(--border-soft);
+}
+
+.form-wrap-label{
+  text-align:center;
+  font-size:13px;
+  font-weight:700;
+  color:var(--navy);
+  padding:8px 0 12px;
 }
 
 .form-wrap iframe{

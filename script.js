@@ -1,7 +1,7 @@
 // ===== SET TARGET WAKTU COUNTDOWN =====
 // Tanggal target tetap (fixed), tidak berubah saat halaman di-refresh.
 // Ubah sesuai kebutuhan (format: 'YYYY-MM-DDTHH:mm:ss')
-const targetDate = new Date('2026-08-31T23:59:00');
+const targetDate = new Date('2026-10-21T23:59:00');
 
 function updateCountdown(){
   const now = new Date();
@@ -22,11 +22,6 @@ function updateCountdown(){
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
-
-// ===== SCROLL OTOMATIS SAAT TOMBOL DIKLIK =====
-document.getElementById('registerBtn').addEventListener('click', function(){
-  document.getElementById('formSection').scrollIntoView({ behavior:'smooth' });
-});
 
 // ===== CAROUSEL "ALASAN MENGIKUTI" (COVERFLOW) =====
 const cfTrack = document.getElementById('cfTrack');
