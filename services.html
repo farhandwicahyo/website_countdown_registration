@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Program Kami | Organisasi Dokter</title>
+<title>Program Kami | Pertasindo</title>
 <link rel="stylesheet" href="site.css">
 </head>
 <body>
@@ -12,9 +12,9 @@
   <div class="nav-inner">
     <a class="site-logo" href="index.html">
       <span class="logo-mark">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 2h2v7h7v2h-7v11h-2V11H4V9h7V2Z"/></svg>
+        <img src="assets/logo-pertasindo.png" alt="Logo Pertasindo">
       </span>
-      <span class="logo-text">LOGO HERE<small>ORGANISASI DOKTER</small></span>
+      <span class="logo-text">PERTASINDO<small>SOLID &bull; KNOWLEDGE &bull; DEFENSE</small></span>
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
@@ -41,36 +41,69 @@
 </section>
 
 <section class="section">
-  <div class="services-grid">
-    <div class="service-card">
-      <span class="sc-icon" style="background:#1c6fd6;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
-      <h3>Seminar &amp; Workshop</h3>
-      <p>Diskusi ilmiah rutin bersama pembicara ahli dari berbagai bidang kedokteran, membahas perkembangan terbaru dalam dunia medis.</p>
+  <div class="program-carousel">
+    <div class="pc-image">
+      <div class="pc-image-panel active" data-panel="0">
+        <img src="assets/ABC00395.jpg" alt="Seminar &amp; Workshop">
+      </div>
+      <div class="pc-image-panel" data-panel="1">
+        <img src="assets/DSC05087.jpg" alt="Sertifikasi Profesi">
+      </div>
+      <div class="pc-image-panel" data-panel="2">
+        <img src="assets/ABC01848.jpg" alt="Riset &amp; Publikasi">
+      </div>
+      <div class="pc-image-panel" data-panel="3">
+        <img src="assets/DSC04746.jpg" alt="Pelatihan Klinis">
+      </div>
+      <div class="pc-image-panel" data-panel="4">
+        <img src="assets/ABC00632.JPG" alt="Bakti Sosial">
+      </div>
+      <div class="pc-image-panel" data-panel="5">
+        <img src="assets/ABC00395.jpg" alt="Jaringan &amp; Mentoring">
+      </div>
     </div>
-    <div class="service-card">
-      <span class="sc-icon" style="background:#14b8a6;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 3v6c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V5l7-3Z"/><path d="M9 12l2 2 4-4"/></svg></span>
-      <h3>Sertifikasi Profesi</h3>
-      <p>Program sertifikasi kompetensi berkelanjutan yang diakui secara resmi untuk menunjang jenjang karier anggota.</p>
+
+    <div class="pc-panel">
+    <div class="pc-cards-wrap">
+      <div class="pc-track-viewport">
+        <div class="pc-cards" id="pcCards">
+          <div class="pc-card active" data-index="0">
+            <h3>Seminar &amp; Workshop</h3>
+            <span class="pc-line"></span>
+            <p>Diskusi ilmiah rutin bersama pembicara ahli dari berbagai bidang kedokteran, membahas perkembangan terbaru dalam dunia medis.</p>
+          </div>
+          <div class="pc-card" data-index="1">
+            <h3>Sertifikasi Profesi</h3>
+            <span class="pc-line"></span>
+            <p>Program sertifikasi kompetensi berkelanjutan yang diakui secara resmi untuk menunjang jenjang karier anggota.</p>
+          </div>
+          <div class="pc-card" data-index="2">
+            <h3>Riset &amp; Publikasi</h3>
+            <span class="pc-line"></span>
+            <p>Wadah bagi anggota untuk mempublikasikan karya ilmiah dan hasil riset klinis ke jurnal serta forum ilmiah.</p>
+          </div>
+          <div class="pc-card" data-index="3">
+            <h3>Pelatihan Klinis</h3>
+            <span class="pc-line"></span>
+            <p>Peningkatan keterampilan klinis melalui praktik langsung dan bimbingan dari mentor berpengalaman.</p>
+          </div>
+          <div class="pc-card" data-index="4">
+            <h3>Bakti Sosial</h3>
+            <span class="pc-line"></span>
+            <p>Kegiatan pengabdian dan layanan kesehatan gratis bagi masyarakat di berbagai wilayah.</p>
+          </div>
+          <div class="pc-card" data-index="5">
+            <h3>Jaringan &amp; Mentoring</h3>
+            <span class="pc-line"></span>
+            <p>Menghubungkan anggota dengan mentor dan sesama profesional untuk memperluas jaringan karier.</p>
+          </div>
+        </div>
+      </div>
+      <div class="pc-nav">
+        <button class="pc-btn" id="pcPrev" type="button" aria-label="Program sebelumnya">&larr;</button>
+        <button class="pc-btn" id="pcNext" type="button" aria-label="Program berikutnya">&rarr;</button>
+      </div>
     </div>
-    <div class="service-card">
-      <span class="sc-icon" style="background:#0e2f5c;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V6a2 2 0 0 1 2-2h13v14H6a2 2 0 0 0-2 2Z"/><path d="M8 8h8M8 12h6"/></svg></span>
-      <h3>Riset &amp; Publikasi</h3>
-      <p>Wadah bagi anggota untuk mempublikasikan karya ilmiah dan hasil riset klinis ke jurnal serta forum ilmiah.</p>
-    </div>
-    <div class="service-card">
-      <span class="sc-icon" style="background:#d6392e;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M14 3v6h6"/></svg></span>
-      <h3>Pelatihan Klinis</h3>
-      <p>Peningkatan keterampilan klinis melalui praktik langsung dan bimbingan dari mentor berpengalaman.</p>
-    </div>
-    <div class="service-card">
-      <span class="sc-icon" style="background:#f2a13a;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.4-9.5-9C1 8.4 3 5 6.5 5 8.6 5 10.6 6.1 12 8c1.4-1.9 3.4-3 5.5-3C21 5 23 8.4 21.5 12 19 16.6 12 21 12 21Z"/></svg></span>
-      <h3>Bakti Sosial</h3>
-      <p>Kegiatan pengabdian dan layanan kesehatan gratis bagi masyarakat di berbagai wilayah.</p>
-    </div>
-    <div class="service-card">
-      <span class="sc-icon" style="background:#7c3aed;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 19c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6"/><circle cx="17.5" cy="8.5" r="2.7"/><path d="M15.3 13.2c2.7.3 4.7 2.4 4.7 5.3"/></svg></span>
-      <h3>Jaringan &amp; Mentoring</h3>
-      <p>Menghubungkan anggota dengan mentor dan sesama profesional untuk memperluas jaringan karier.</p>
     </div>
   </div>
 </section>
@@ -78,7 +111,7 @@
 <section class="section soft">
   <div class="content-grid">
     <div class="content-text">
-      <h2>Terhubung dengan <span style="color:#14b8a6;">Program yang Tepat</span></h2>
+      <h2>Terhubung dengan <span style="color:#c3a152;">Program yang Tepat</span></h2>
       <p>Setiap program kami dirancang untuk menjawab kebutuhan anggota di berbagai tahap karier — mulai dari dokter baru lulus hingga spesialis berpengalaman.</p>
       <p>Ingin tahu jadwal terdekat dari program-program ini? Lihat agenda lengkap kami atau langsung bergabung sebagai anggota.</p>
       <div class="hero-actions">
@@ -88,11 +121,11 @@
     </div>
     <div class="content-visual">
       <svg viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="110" cy="110" r="90" fill="#eaf4fd"/>
-        <rect x="55" y="60" width="50" height="70" rx="8" fill="#1c6fd6"/>
-        <rect x="115" y="90" width="50" height="70" rx="8" fill="#14b8a6"/>
-        <circle cx="80" cy="50" r="14" fill="#0e2f5c"/>
-        <circle cx="140" cy="80" r="14" fill="#0d9488"/>
+        <circle cx="110" cy="110" r="90" fill="#ece9ef"/>
+        <rect x="55" y="60" width="50" height="70" rx="8" fill="#4b1f85"/>
+        <rect x="115" y="90" width="50" height="70" rx="8" fill="#c3a152"/>
+        <circle cx="80" cy="50" r="14" fill="#240949"/>
+        <circle cx="140" cy="80" r="14" fill="#96793c"/>
       </svg>
     </div>
   </div>
@@ -114,11 +147,11 @@
     <div class="footer-brand">
       <a class="site-logo" href="index.html">
         <span class="logo-mark">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 2h2v7h7v2h-7v11h-2V11H4V9h7V2Z"/></svg>
+          <img src="assets/logo-pertasindo.png" alt="Logo Pertasindo">
         </span>
-        <span class="logo-text">LOGO HERE</span>
+        <span class="logo-text">PERTASINDO</span>
       </a>
-      <p>Wadah profesi dokter untuk belajar, berkolaborasi, dan berkontribusi bagi dunia kesehatan.</p>
+      <p>Perkumpulan Ketahanan Kesehatan Indonesia untuk belajar, berkolaborasi, dan berkontribusi bagi dunia kesehatan.</p>
       <div class="footer-social">
         <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.5 1.6-1.5h1.6V3.3C16.4 3.2 15.3 3 14 3c-2.6 0-4.4 1.6-4.4 4.5v2.3H7v3.2h2.6V21h3.9Z"/></svg></a>
         <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4l7.3 9.6L4.4 20h2l6-6.7L17 20h4l-7.6-10 6.6-7.4h-2l-5.5 6.1L8 4H4Z"/></svg></a>
@@ -158,12 +191,12 @@
       <ul class="footer-contact">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Jl. Kesehatan No. 123, Jakarta</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v2a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 1h2a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L7.1 8.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.9 2Z"/></svg><span>+62 857 1011 6209</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>info@organisasidokter.or.id</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>info@pertasindo.or.id</span></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    &copy; 2026 LOGO HERE. Seluruh hak cipta dilindungi.
+    &copy; 2026 PERTASINDO. Seluruh hak cipta dilindungi.
   </div>
 </footer>
 

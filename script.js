@@ -28,6 +28,52 @@ document.getElementById('registerBtn').addEventListener('click', function(){
   document.getElementById('formSection').scrollIntoView({ behavior:'smooth' });
 });
 
+// ===== CAROUSEL "ALASAN MENGIKUTI" (COVERFLOW) =====
+const cfTrack = document.getElementById('cfTrack');
+const cfCards = cfTrack ? Array.from(cfTrack.querySelectorAll('.cf-card')) : [];
+const cfPrevBtn = document.getElementById('cfPrev');
+const cfNextBtn = document.getElementById('cfNext');
+let cfIndex = 0;
+
+function renderCoverflow(){
+  const total = cfCards.length;
+  cfCards.forEach(function(card, i){
+    const diff = (i - cfIndex + total) % total;
+    let pos = 'hidden';
+    if(diff === 0) pos = 'active';
+    else if(diff === 1) pos = 'next1';
+    else if(diff === 2) pos = 'next2';
+    else if(diff === total - 1) pos = 'prev1';
+    else if(diff === total - 2) pos = 'prev2';
+    card.setAttribute('data-pos', pos);
+  });
+}
+
+if(cfCards.length){
+  renderCoverflow();
+
+  if(cfPrevBtn){
+    cfPrevBtn.addEventListener('click', function(){
+      cfIndex = (cfIndex - 1 + cfCards.length) % cfCards.length;
+      renderCoverflow();
+    });
+  }
+
+  if(cfNextBtn){
+    cfNextBtn.addEventListener('click', function(){
+      cfIndex = (cfIndex + 1) % cfCards.length;
+      renderCoverflow();
+    });
+  }
+
+  cfCards.forEach(function(card, i){
+    card.addEventListener('click', function(){
+      cfIndex = i;
+      renderCoverflow();
+    });
+  });
+}
+
 // ===== POPUP KONFIRMASI NAMA SEBELUM KE WHATSAPP =====
 const waPhoneNumber = '6285710116209';
 const overlay = document.getElementById('nameModalOverlay');
