@@ -1493,10 +1493,6 @@ img,svg{display:block;max-width:100%;}
   .program-carousel{ grid-template-columns:1fr; }
 }
 
-@media (max-width:600px){
-  #programCarouselSection{ display:none; }
-}
-
 .pc-image{
   position:relative;
   overflow:hidden;
@@ -1644,7 +1640,11 @@ img,svg{display:block;max-width:100%;}
 .pc-btn:hover{ background:var(--teal); border-color:var(--teal); }
 
 @media (max-width:600px){
-  .pc-card{ flex-basis:210px; }
+  .pc-track-viewport{ overflow:visible; max-height:none; }
+  .pc-cards{ flex-direction:column; transform:none !important; }
+  .pc-card{ flex:0 0 auto; width:100%; align-items:center; text-align:center; }
+  .pc-card .pc-line{ margin-left:auto; margin-right:auto; }
+  .pc-nav{ display:none; }
 }
 
 /* ===== TIMELINE (about page) ===== */
