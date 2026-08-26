@@ -171,6 +171,12 @@
 .cf-card h3{ font-size:16px; font-weight:700; color:var(--navy); margin-bottom:10px; }
 .cf-card p{ font-size:13.5px; color:var(--text-gray); line-height:1.65; }
 
+.cf-link{
+  color:var(--teal-dark);
+  font-weight:700;
+  text-decoration:underline;
+}
+
 .cf-card[data-pos="active"]{ transform:translateX(0) translateZ(0) scale(1); opacity:1; z-index:5; }
 .cf-card[data-pos="prev1"]{ transform:translateX(-280px) translateZ(-80px) rotateY(14deg) scale(0.88); opacity:0.85; z-index:4; }
 .cf-card[data-pos="next1"]{ transform:translateX(280px) translateZ(-80px) rotateY(-14deg) scale(0.88); opacity:0.85; z-index:4; }
