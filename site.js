@@ -352,6 +352,85 @@ if(contactForm){
   });
 }
 
+// ===== NEWS MODAL / LIGHTBOX (news.html) =====
+const newsModalOverlays = Array.from(document.querySelectorAll('.news-modal-overlay'));
+
+if(newsModalOverlays.length){
+  function openNewsModal(overlay){
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeNewsModal(overlay){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  newsModalOverlays.forEach(function(overlay){
+    const closeBtn = overlay.querySelector('.news-modal-close');
+    if(closeBtn) closeBtn.addEventListener('click', function(){ closeNewsModal(overlay); });
+
+    overlay.addEventListener('click', function(e){
+      if(e.target === overlay) closeNewsModal(overlay);
+    });
+  });
+
+  document.querySelectorAll('[data-news-modal]').forEach(function(trigger){
+    const overlay = document.getElementById(trigger.getAttribute('data-news-modal') + 'ModalOverlay');
+    if(!overlay) return;
+    trigger.addEventListener('click', function(e){
+      e.preventDefault();
+      openNewsModal(overlay);
+    });
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'Escape') return;
+    const openOverlay = newsModalOverlays.find(function(overlay){ return overlay.classList.contains('open'); });
+    if(openOverlay) closeNewsModal(openOverlay);
+  });
+}
+
+// ===== NTT NEWS MODAL GALLERY (news.html) =====
+const nttModalOverlay = document.getElementById('nttModalOverlay');
+
+if(nttModalOverlay){
+  const nttModalPrev = document.getElementById('nttModalPrev');
+  const nttModalNext = document.getElementById('nttModalNext');
+  const nttModalCount = document.getElementById('nttModalCount');
+  const nttSlides = Array.from(document.querySelectorAll('#nttModalSlides .news-modal-slide'));
+  const nttThumbs = Array.from(document.querySelectorAll('#nttModalThumbs button'));
+  let nttIndex = 0;
+
+  function renderNttModal(){
+    nttSlides.forEach(function(slide, i){ slide.classList.toggle('active', i === nttIndex); });
+    nttThumbs.forEach(function(thumb, i){ thumb.classList.toggle('active', i === nttIndex); });
+    if(nttModalCount){
+      nttModalCount.textContent = String(nttIndex + 1).padStart(2, '0') + ' / ' + String(nttSlides.length).padStart(2, '0');
+    }
+  }
+
+  function goToNttSlide(i){
+    nttIndex = (i + nttSlides.length) % nttSlides.length;
+    renderNttModal();
+  }
+
+  if(nttModalPrev) nttModalPrev.addEventListener('click', function(){ goToNttSlide(nttIndex - 1); });
+  if(nttModalNext) nttModalNext.addEventListener('click', function(){ goToNttSlide(nttIndex + 1); });
+
+  nttThumbs.forEach(function(thumb, i){
+    thumb.addEventListener('click', function(){ goToNttSlide(i); });
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(!nttModalOverlay.classList.contains('open')) return;
+    if(e.key === 'ArrowLeft') goToNttSlide(nttIndex - 1);
+    if(e.key === 'ArrowRight') goToNttSlide(nttIndex + 1);
+  });
+
+  renderNttModal();
+}
+
 // ===== HIGHLIGHT MENU AKTIF SESUAI HALAMAN =====
 const currentPage = location.pathname.split('/').pop() || 'index.html';
 

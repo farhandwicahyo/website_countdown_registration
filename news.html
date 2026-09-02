@@ -46,16 +46,26 @@
 
 <section class="section">
   <div class="news-grid">
-    <div class="news-card">
+    <a class="news-card news-card-link" href="#" data-news-modal="karhutla">
+      <div class="news-thumb">
+        <img src="assets/alex-ginting.jpg" alt="Dr. Alexander Ginting: Karhutla Harus Dipandang sebagai Ancaman Kesehatan Masyarakat" class="thumb-face-top">
+      </div>
+      <div class="news-body">
+        <span class="news-tag">Kesehatan Masyarakat</span>
+        <h3>Dr. Alexander Ginting: Karhutla Harus Dipandang sebagai Ancaman Kesehatan Masyarakat</h3>
+        <span class="news-date">2 Sep 2026</span>
+      </div>
+    </a>
+    <a class="news-card news-card-link" href="#" data-news-modal="ntt">
       <div class="news-thumb">
         <img src="assets/pertasindo-peduli-ntt.jpeg" alt="PERTASINDO Peduli NTT">
       </div>
       <div class="news-body">
-        <span class="news-tag">Pengabdian Masyarakat</span>
+        <span class="news-tag">Tanggap Darurat Bencana</span>
         <h3>PERTASINDO Peduli NTT</h3>
         <span class="news-date">25 Agu 2026</span>
       </div>
-    </div>
+    </a>
     <div class="news-card">
       <div class="news-thumb">
         <img src="assets/golf-pertasindo.jpeg" alt="Independence Day Golf Tournament">
@@ -98,6 +108,145 @@
     </div>
   </div>
 </section>
+
+<div class="news-modal-overlay" id="nttModalOverlay">
+  <div class="news-modal" role="dialog" aria-modal="true" aria-labelledby="nttModalTitle">
+    <button class="news-modal-close" id="nttModalClose" type="button" aria-label="Tutup">&times;</button>
+    <div class="news-modal-media">
+      <div class="news-modal-gallery">
+        <span class="news-modal-count" id="nttModalCount">01 / 10</span>
+        <div class="news-modal-slides" id="nttModalSlides">
+          <div class="news-modal-slide active" data-index="0">
+            <img src="assets/pertasindo-ntt/pertasindo-ntt-1.jpeg" alt="Pengemasan bantuan alat kesehatan PERTASINDO Peduli NTT">
+            <p class="news-modal-caption">Pengemasan akhir bantuan alat kesehatan bertanda &ldquo;Alkes &ndash; Jangan Dibanting&rdquo; sebelum diberangkatkan ke Nusa Tenggara Timur.</p>
+          </div>
+          <div class="news-modal-slide" data-index="1">
+            <img src="assets/pertasindo-ntt/pertasindo-ntt-2.jpeg" alt="Bantuan diturunkan dari kendaraan Dinas Kesehatan Kabupaten Sikka">
+            <p class="news-modal-caption">Bantuan diturunkan dari kendaraan operasional Dinas Kesehatan Daerah Kabupaten Sikka untuk diteruskan ke titik distribusi.</p>
+          </div>
+          <div class="news-modal-slide" data-index="2">
+            <img src="assets/pertasindo-ntt/pertasindo-ntt-3.jpeg" alt="Tim PERTASINDO disambut personel TNI di Nusa Tenggara Timur">
+            <p class="news-modal-caption">Tim PERTASINDO disambut personel TNI begitu tiba di Nusa Tenggara Timur.</p>
+          </div>
+          <div class="news-modal-slide" data-index="3">
+            <img src="assets/pertasindo-ntt/pertasindo-ntt-4.jpeg" alt="Tim relawan PERTASINDO dalam perjalanan menuju lokasi bakti sosial">
+            <p class="news-modal-caption">Momen kebersamaan tim relawan selama perjalanan menuju lokasi bakti sosial.</p>
+          </div>
+          <div class="news-modal-slide" data-index="4">
+            <img src="assets/pertasindo-ntt/pertasindo-ntt-5.jpeg" alt="Pesawat Hercules TNI Angkatan Udara mengangkut bantuan logistik">
+            <p class="news-modal-caption">Pesawat Hercules TNI Angkatan Udara mengangkut bantuan logistik kesehatan menuju NTT.</p>
+          </div>
+          <div class="news-modal-slide" data-index="5">
+            <img src="assets/pertasindo-ntt/pertasindo-ntt-6.jpeg" alt="Kekompakan tim PERTASINDO dan mitra TNI di lapangan udara">
+            <p class="news-modal-caption">Kekompakan tim PERTASINDO dan mitra TNI di lapangan udara, siap melanjutkan misi kemanusiaan.</p>
+          </div>
+          <div class="news-modal-slide" data-index="6">
+            <img src="assets/pertasindo-ntt/pertasindo-ntt-7.jpeg" alt="Paket bantuan kebutuhan pokok dan alat kesehatan sebelum dikirim ke NTT">
+            <p class="news-modal-caption">Paket bantuan berupa kebutuhan pokok dan alat kesehatan yang dikumpulkan sebelum dikirim ke NTT.</p>
+          </div>
+          <div class="news-modal-slide" data-index="7">
+            <img src="assets/pertasindo-ntt/pertasindo-ntt-8.jpeg" alt="Koordinasi bersama TNI di Gudang Perbekalan Angkatan">
+            <p class="news-modal-caption">Koordinasi bersama personel TNI di Gudang Perbekalan Angkatan sebelum bantuan dinaikkan ke pesawat.</p>
+          </div>
+          <div class="news-modal-slide" data-index="8">
+            <img src="assets/pertasindo-ntt/pertasindo-ntt-9.jpeg" alt="Bantuan alat kesehatan dikonsolidasikan di gudang logistik">
+            <p class="news-modal-caption">Bantuan alat kesehatan PERTASINDO dikonsolidasikan di gudang logistik, dipilah sesuai zona distribusi.</p>
+          </div>
+          <div class="news-modal-slide" data-index="9">
+            <img src="assets/pertasindo-ntt/pertasindo-ntt-10.jpeg" alt="Barang bantuan siap diberangkatkan menuju Nusa Tenggara Timur">
+            <p class="news-modal-caption">Barang bantuan yang telah dikemas siap diberangkatkan dari gudang logistik menuju Nusa Tenggara Timur.</p>
+          </div>
+        </div>
+        <button class="news-modal-nav news-modal-prev" id="nttModalPrev" type="button" aria-label="Sebelumnya">&lsaquo;</button>
+        <button class="news-modal-nav news-modal-next" id="nttModalNext" type="button" aria-label="Berikutnya">&rsaquo;</button>
+      </div>
+      <div class="news-modal-thumbs" id="nttModalThumbs">
+        <button type="button" class="active" data-index="0"><img src="assets/pertasindo-ntt/pertasindo-ntt-1.jpeg" alt=""></button>
+        <button type="button" data-index="1"><img src="assets/pertasindo-ntt/pertasindo-ntt-2.jpeg" alt=""></button>
+        <button type="button" data-index="2"><img src="assets/pertasindo-ntt/pertasindo-ntt-3.jpeg" alt=""></button>
+        <button type="button" data-index="3"><img src="assets/pertasindo-ntt/pertasindo-ntt-4.jpeg" alt=""></button>
+        <button type="button" data-index="4"><img src="assets/pertasindo-ntt/pertasindo-ntt-5.jpeg" alt=""></button>
+        <button type="button" data-index="5"><img src="assets/pertasindo-ntt/pertasindo-ntt-6.jpeg" alt=""></button>
+        <button type="button" data-index="6"><img src="assets/pertasindo-ntt/pertasindo-ntt-7.jpeg" alt=""></button>
+        <button type="button" data-index="7"><img src="assets/pertasindo-ntt/pertasindo-ntt-8.jpeg" alt=""></button>
+        <button type="button" data-index="8"><img src="assets/pertasindo-ntt/pertasindo-ntt-9.jpeg" alt=""></button>
+        <button type="button" data-index="9"><img src="assets/pertasindo-ntt/pertasindo-ntt-10.jpeg" alt=""></button>
+      </div>
+    </div>
+    <div class="news-modal-body">
+      <span class="news-tag">Tanggap Darurat Bencana</span>
+      <h3 id="nttModalTitle">PERTASINDO Kirim Tim Emergency Response MERP-DISASTER Bantu Korban Gempa di Kabupaten Sikka, NTT</h3>
+      <span class="news-date">25&ndash;26 Agustus 2026</span>
+      <p>Perkumpulan Ketahanan Kesehatan Indonesia (PERTASINDO) mengirimkan tim Emergency Response melalui Divisi Medical Emergency Preparedness and Response&ndash;Disaster (MERP-DISASTER) untuk membantu masyarakat yang terdampak gempa bumi di Kabupaten Sikka, Nusa Tenggara Timur (NTT).</p>
+      <p>Misi kemanusiaan tersebut dilakukan dengan membawa sejumlah kebutuhan medis dan logistik untuk mendukung masyarakat serta fasilitas kesehatan di wilayah terdampak. Tim berangkat dari Lanud Halim Perdanakusuma, Jakarta, menuju Maumere dengan dukungan transportasi udara dari TNI Angkatan Udara.</p>
+      <p>Atas arahan Ketua Umum PERTASINDO, Dr. Dr. dr. Dian Andriani Ratna Dewi, SpDVE, MBiomed, MARS, SH, MH, FINSDV, FAADV, persiapan dilakukan dengan mengerahkan personel sekaligus mengumpulkan obat-obatan, alat kesehatan, kebutuhan logistik, tenda, panel surya, bahan makanan dan perlengkapan lainnya.</p>
+      <p>Tiga personel diterjunkan dalam misi tersebut, yakni dr. Renauld Koswiranagara, FIMMA selaku koordinator, Dr. dr. Tri Maharani, Sp.EM, FIMMA, Toxinologist, serta Kapten Kes dr. Dwi Fitri, FIMMA.</p>
+      <p>Tim membawa delapan koli bantuan dengan berat sekitar 100 kilogram. Mereka bertolak pada 25 Agustus 2026 dan tiba di Bandara Frans Seda, Maumere, sekitar pukul 09.30 WITA.</p>
+      <p>Setelah tiba di Maumere, tim langsung melakukan koordinasi dengan jajaran kesehatan TNI AU, Dinas Kesehatan, serta tenaga kesehatan di Kabupaten Sikka. Langkah tersebut dilakukan untuk memetakan kebutuhan dan menentukan lokasi yang menjadi prioritas penanganan.</p>
+      <p>Tim kemudian mendatangi sejumlah lokasi, di antaranya Pengungsian Nangahale, Puskesmas Watubaing, Puskesmas Boganatar, Puskesmas Waigete, RSUD TC Hillers, dan RS St. Gabriel Kewapante.</p>
+      <p>Selain mendistribusikan bantuan, PERTASINDO juga memberikan perhatian terhadap persoalan kesehatan yang muncul di lokasi pengungsian. Salah satunya terkait meningkatnya potensi interaksi warga dengan ular akibat perubahan lingkungan pascagempa.</p>
+      <p>Kondisi lingkungan yang berubah, keberadaan puing bangunan, terganggunya habitat ular, serta aktivitas warga di area terbuka menjadi sejumlah faktor yang perlu diantisipasi. Di Puskesmas Watubaing, tim juga menemukan adanya pasien pengungsi yang mengalami gigitan ular.</p>
+      <p>Dokter Tri Maharani kemudian memberikan edukasi kepada masyarakat dan pelatihan bagi tenaga kesehatan mengenai upaya pencegahan serta penanganan gigitan ular berbisa.</p>
+      <p>Bantuan yang disalurkan PERTASINDO mencakup antibisa ular, obat-obatan, alat kesehatan, High Flow Nasal Cannula (HFNC), panel surya, lampu tenaga surya, tenda, bahan makanan, pakaian dan kebutuhan sehari-hari lainnya.</p>
+      <p>Salah satu dukungan peralatan kesehatan juga diberikan kepada RSUD TC Hillers berupa HFNC. Bantuan tersebut diharapkan dapat menunjang pelayanan medis bagi masyarakat yang membutuhkan penanganan kesehatan pascagempa.</p>
+      <p>Ketua Umum PERTASINDO, Dian Andriani Ratna Dewi, melalui misi tersebut menegaskan komitmen organisasi dalam memperkuat ketahanan kesehatan, terutama dalam menghadapi situasi bencana dan kondisi kedaruratan medis.</p>
+      <p>Pelaksanaan misi melibatkan kolaborasi dengan berbagai pihak, termasuk TNI Angkatan Udara, Dinas Kesehatan, rumah sakit, puskesmas, tenaga kesehatan setempat, donatur dan masyarakat.</p>
+      <p>Kolaborasi tersebut menjadi bagian penting agar bantuan yang dikirim tidak hanya tiba di wilayah terdampak, tetapi juga dapat disesuaikan dengan kebutuhan masyarakat dan fasilitas kesehatan di lapangan.</p>
+      <p>Setelah menyelesaikan rangkaian kegiatan di Kabupaten Sikka dan Maumere, Tim Emergency Response PERTASINDO kembali ke Jakarta pada 26 Agustus 2026 dalam kondisi selamat.</p>
+      <p>Respons tersebut menjadi bagian dari upaya PERTASINDO dalam menjalankan peran kemanusiaan melalui kesiapsiagaan bencana, pelayanan kedaruratan medis, peningkatan kapasitas tenaga kesehatan dan kerja sama lintas sektor.</p>
+      <p class="news-modal-byline"></p>
+    </div>
+  </div>
+</div>
+
+<div class="news-modal-overlay" id="karhutlaModalOverlay">
+  <div class="news-modal" role="dialog" aria-modal="true" aria-labelledby="karhutlaModalTitle">
+    <button class="news-modal-close" id="karhutlaModalClose" type="button" aria-label="Tutup">&times;</button>
+    <div class="news-modal-media">
+      <div class="news-modal-gallery news-modal-gallery-single">
+        <img src="assets/alex-ginting.jpg" alt="Dr. Alexander Ginting" class="thumb-face-top">
+      </div>
+    </div>
+    <div class="news-modal-body">
+      <span class="news-tag">Kesehatan Masyarakat</span>
+      <h3 id="karhutlaModalTitle">Dr. Alexander Ginting: Karhutla Harus Dipandang sebagai Ancaman Kesehatan Masyarakat</h3>
+      <span class="news-date">2 September 2026</span>
+      <p>Kebakaran hutan dan lahan (Karhutla) tidak hanya menimbulkan kerusakan lingkungan, tetapi juga berpotensi memberikan dampak luas terhadap kesehatan masyarakat.</p>
+      <p>Asap yang dihasilkan dari kebakaran dapat menyebar jauh dari titik api dan meningkatkan risiko gangguan pernapasan bagi masyarakat.</p>
+      <p>Pandangan tersebut disampaikan Brigjen TNI (Purn.) dr. Alexander K. Ginting, Sp.P(K), FIMMA, dokter spesialis dan konsultan paru sekaligus salah satu Dewan Pakar Perkumpulan Ketahanan Kesehatan Indonesia (PERTASINDO).</p>
+      <p>Menurut Alexander, penanganan Karhutla perlu ditempatkan dalam perspektif yang lebih luas. Keberhasilan memadamkan api tidak otomatis menghilangkan ancaman kesehatan karena paparan asap masih dapat berlangsung setelah kebakaran terkendali.</p>
+      <p>&ldquo;Ketika api padam, ancaman terhadap kesehatan belum tentu ikut padam,&rdquo; ujar Alexander.</p>
+      <p>Ia menjelaskan, asap Karhutla mengandung berbagai zat dan partikel yang dapat masuk ke sistem pernapasan. Salah satu yang perlu mendapat perhatian adalah partikulat halus PM2.5 karena ukurannya sangat kecil sehingga dapat mencapai bagian dalam saluran pernapasan.</p>
+      <p>Paparan asap dapat menyebabkan berbagai keluhan, seperti iritasi mata dan tenggorokan, batuk, berdahak, sesak napas hingga infeksi saluran pernapasan akut (ISPA).</p>
+      <p>Kondisi tersebut juga dapat memperburuk penyakit yang sebelumnya telah dialami, terutama asma dan penyakit paru obstruktif kronik (PPOK).</p>
+      <p>Selain partikulat, asap kebakaran juga dapat mengandung karbon monoksida dan sejumlah senyawa lainnya. Pada paparan tertentu, karbon monoksida dapat mengganggu kemampuan tubuh memperoleh oksigen.</p>
+      <p>Karena itu, Alexander menilai dampak Karhutla tidak cukup diukur dari luas lahan yang terbakar.</p>
+      <p>Jumlah masyarakat yang terpapar asap dan kapasitas sistem kesehatan dalam menghadapi dampak tersebut juga perlu menjadi perhatian.</p>
+      <p>Kelompok masyarakat tertentu memiliki risiko lebih tinggi ketika kualitas udara memburuk.</p>
+      <p>Mereka antara lain anak-anak, lanjut usia, ibu hamil, penderita asma, PPOK, penyakit jantung dan paru, serta masyarakat yang bekerja atau melakukan aktivitas di luar ruangan dalam waktu lama.</p>
+      <p>Alexander juga mengingatkan bahwa dampak asap tidak mengenal batas administratif.</p>
+      <p>Pergerakan angin dapat membawa asap dari lokasi kebakaran ke wilayah lain yang berjarak jauh. Kondisi tersebut membuat Karhutla menjadi persoalan yang membutuhkan penanganan lintas wilayah dan lintas sektor.</p>
+      <p>Dalam konteks Indonesia, Karhutla juga dipengaruhi oleh kombinasi faktor manusia dan kondisi lingkungan.</p>
+      <p>Aktivitas penggunaan api untuk membuka atau membersihkan lahan menjadi salah satu faktor yang dapat memicu kebakaran, sementara kemarau panjang dan kondisi lahan yang kering dapat membuat api lebih mudah meluas.</p>
+      <p>Kondisi lahan gambut menjadi perhatian khusus. Ketika gambut mengalami kekeringan, api dapat menjalar hingga lapisan bawah permukaan sehingga proses penanganannya menjadi lebih kompleks.</p>
+      <p>Pada 2026, persoalan Karhutla kembali menjadi perhatian seiring memasuki periode kemarau. Berdasarkan data yang dikutip dalam materi PERTASINDO, hingga 1 September 2026 Polri telah menetapkan 89 tersangka perorangan dari 189 laporan terkait dugaan Karhutla.</p>
+      <p>Alexander menilai masyarakat juga perlu menjadikan informasi kualitas udara sebagai salah satu pertimbangan sebelum melakukan aktivitas di luar rumah.</p>
+      <p>Air Quality Index (AQI) dapat digunakan untuk mengetahui kondisi udara dan menentukan langkah perlindungan yang diperlukan.</p>
+      <p>Ketika kualitas udara memburuk, masyarakat disarankan mengurangi aktivitas di luar ruangan, terutama aktivitas fisik berat. Jika harus keluar rumah, penggunaan masker yang sesuai dapat membantu mengurangi paparan partikulat.</p>
+      <p>Paparan asap di dalam rumah juga dapat ditekan dengan menutup pintu dan jendela serta mengurangi celah masuknya udara dari luar. Penggunaan air purifier dengan filter HEPA juga dapat membantu menyaring partikulat halus di dalam ruangan.</p>
+      <p>Masyarakat perlu segera mencari pertolongan medis apabila mengalami sesak napas, batuk yang semakin berat, mengi, nyeri dada atau gangguan pernapasan yang tidak kunjung membaik.</p>
+      <p>Sebagai Dewan Pakar PERTASINDO, Alexander melihat penanganan Karhutla dari sisi kesiapan kesehatan, khususnya perlindungan respirasi dan ketahanan sistem pelayanan kesehatan.</p>
+      <p>Kesiapsiagaan tersebut mencakup pemetaan kelompok rentan, edukasi masyarakat, pemantauan gangguan pernapasan, surveilans kesehatan, hingga kesiapan fasilitas pelayanan kesehatan.</p>
+      <p>Menurutnya, peningkatan paparan asap dalam skala luas berpotensi meningkatkan jumlah masyarakat yang membutuhkan pelayanan medis secara bersamaan.</p>
+      <p>Situasi tersebut dapat memberikan tekanan terhadap puskesmas, rumah sakit, tenaga kesehatan, obat-obatan, hingga sistem rujukan. Karena itu, penanganan Karhutla membutuhkan kerja sama berbagai unsur.</p>
+      <p>Upaya tersebut tidak hanya berkaitan dengan pemadaman api, tetapi juga pencegahan, pemantauan kualitas udara, perlindungan masyarakat, pelayanan kesehatan dan pemulihan pascabencana.</p>
+      <p>PERTASINDO menilai Karhutla menjadi contoh bahwa ancaman terhadap ketahanan kesehatan nasional tidak selalu berupa wabah penyakit.</p>
+      <p>Kerusakan lingkungan dapat berkembang menjadi kedaruratan kesehatan ketika paparan asap menjangkau masyarakat dalam jumlah besar.</p>
+      <p>Alexander mengingatkan masyarakat agar tidak menunggu munculnya gangguan pernapasan untuk mulai memperhatikan kualitas udara.</p>
+      <p>Menurutnya, mengenali kondisi udara, melindungi kelompok rentan, mengurangi paparan asap dan segera mencari pertolongan ketika muncul gejala merupakan bagian dari kesiapsiagaan menghadapi Karhutla.</p>
+    </div>
+  </div>
+</div>
 
 <section class="cta-banner">
   <div class="cta-banner-inner">
