@@ -2123,6 +2123,19 @@ img,svg{display:block;max-width:100%;}
   display:block;
 }
 
+.news-modal-gallery-contain{
+  aspect-ratio:4/5;
+  background:var(--bg-soft);
+}
+
+.news-modal-gallery-contain img{
+  object-fit:contain;
+}
+
+@media (max-width:600px){
+  .news-modal-gallery-contain{ aspect-ratio:1/1; }
+}
+
 .news-modal-caption{
   position:absolute;
   left:0;

@@ -391,45 +391,45 @@ if(newsModalOverlays.length){
   });
 }
 
-// ===== NTT NEWS MODAL GALLERY (news.html) =====
-const nttModalOverlay = document.getElementById('nttModalOverlay');
+// ===== NEWS MODAL GALLERIES (news.html) =====
+newsModalOverlays.forEach(function(overlay){
+  const slides = Array.from(overlay.querySelectorAll('.news-modal-slide'));
+  if(!slides.length) return;
 
-if(nttModalOverlay){
-  const nttModalPrev = document.getElementById('nttModalPrev');
-  const nttModalNext = document.getElementById('nttModalNext');
-  const nttModalCount = document.getElementById('nttModalCount');
-  const nttSlides = Array.from(document.querySelectorAll('#nttModalSlides .news-modal-slide'));
-  const nttThumbs = Array.from(document.querySelectorAll('#nttModalThumbs button'));
-  let nttIndex = 0;
+  const prevBtn = overlay.querySelector('.news-modal-prev');
+  const nextBtn = overlay.querySelector('.news-modal-next');
+  const countEl = overlay.querySelector('.news-modal-count');
+  const thumbs = Array.from(overlay.querySelectorAll('.news-modal-thumbs button'));
+  let index = 0;
 
-  function renderNttModal(){
-    nttSlides.forEach(function(slide, i){ slide.classList.toggle('active', i === nttIndex); });
-    nttThumbs.forEach(function(thumb, i){ thumb.classList.toggle('active', i === nttIndex); });
-    if(nttModalCount){
-      nttModalCount.textContent = String(nttIndex + 1).padStart(2, '0') + ' / ' + String(nttSlides.length).padStart(2, '0');
+  function renderGallery(){
+    slides.forEach(function(slide, i){ slide.classList.toggle('active', i === index); });
+    thumbs.forEach(function(thumb, i){ thumb.classList.toggle('active', i === index); });
+    if(countEl){
+      countEl.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
     }
   }
 
-  function goToNttSlide(i){
-    nttIndex = (i + nttSlides.length) % nttSlides.length;
-    renderNttModal();
+  function goToSlide(i){
+    index = (i + slides.length) % slides.length;
+    renderGallery();
   }
 
-  if(nttModalPrev) nttModalPrev.addEventListener('click', function(){ goToNttSlide(nttIndex - 1); });
-  if(nttModalNext) nttModalNext.addEventListener('click', function(){ goToNttSlide(nttIndex + 1); });
+  if(prevBtn) prevBtn.addEventListener('click', function(){ goToSlide(index - 1); });
+  if(nextBtn) nextBtn.addEventListener('click', function(){ goToSlide(index + 1); });
 
-  nttThumbs.forEach(function(thumb, i){
-    thumb.addEventListener('click', function(){ goToNttSlide(i); });
+  thumbs.forEach(function(thumb, i){
+    thumb.addEventListener('click', function(){ goToSlide(i); });
   });
 
   document.addEventListener('keydown', function(e){
-    if(!nttModalOverlay.classList.contains('open')) return;
-    if(e.key === 'ArrowLeft') goToNttSlide(nttIndex - 1);
-    if(e.key === 'ArrowRight') goToNttSlide(nttIndex + 1);
+    if(!overlay.classList.contains('open')) return;
+    if(e.key === 'ArrowLeft') goToSlide(index - 1);
+    if(e.key === 'ArrowRight') goToSlide(index + 1);
   });
 
-  renderNttModal();
-}
+  renderGallery();
+});
 
 // ===== HIGHLIGHT MENU AKTIF SESUAI HALAMAN =====
 const currentPage = location.pathname.split('/').pop() || 'index.html';
